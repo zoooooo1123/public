@@ -7,7 +7,6 @@ private:
 	int max;
 	int min; 
 	int length;
-
 public:	int *p=new int [length];
 
 public:
@@ -61,12 +60,27 @@ public:
 };
 
 int main(){
-	int a[]={2,1,55,31,22,6,3,11};
-	int b[]={22,5,1,33,5,3,6,11};
-/*	int a[];			试图改为键盘输入数组,要求a[]初始化需指定数组个数
+//输入数组，设置数组长度后输入数组
+	int j=0;
+
+	cout << " 输入第一个数组长度: ";
+	cin >> j;
+	if(j<=0){
+		cout << "数组长度设置错误!"<< endl;
+		exit(1);}
+	int a[j];			
 	cout << "输入第一个数组: ";
-	for(int i=0;cin >> a[i];)i++;
-*/	
+	for(int i=0;i<j;i++)cin >> a[i];
+
+	cout << "输入第二个数组的长度: ";
+	cin >>j;
+	if(j<=0){
+		cout << "数组长度设置错误!"<< endl;
+		exit(1);}
+	int b[j];
+	for(int i=0;i<j;i++)cin >> b[i];
+	
+
 	int size_a=sizeof(a)/sizeof(int);	//求数组长度
 	int size_b=sizeof(b)/sizeof(int);
 	int l=size_a+size_b;
@@ -75,11 +89,10 @@ int main(){
 	
 	Line line1(a,size_a);
 	Line line2(b,size_b);
-//融合数组
+//融合数组,将两个有序数组的最小值比较后输入c[]，当某一数组全输入完毕后直接输入另一数组
 	p1=&line1.p[0];
 	p2=&line2.p[0];
 	cout << "融合后数组为: ";
-//将两个有序数组的最小值比较后输入c[]，当某一数组全输入完毕后直接输入另一数组   
 	for(int i=0;i<l;i++){			
 		if(*p1<=*p2){
 			c[i]=*p1;
